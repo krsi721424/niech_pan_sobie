@@ -27,12 +27,14 @@ public class Main {
                     Counter.countLetters();
                     break;
                 case 3:
+                    Counter.countWords();
                     break;
                 case 4:
                     break;
                 case 5:
                     break;
                 case 6:
+                    Counter.generateReport();
                     break;
                 case 7:
                     break;
