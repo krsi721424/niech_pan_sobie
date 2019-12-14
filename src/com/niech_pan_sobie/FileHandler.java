@@ -4,8 +4,8 @@ import java.io.*;
 import java.net.*;
 
 public class FileHandler {
-    private static final String urlToFile = "https://s3.zylowski.net/public/input/4.txt";
-    private static final String name = "exercise.txt";
+    private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
+    private static final String name = "text.txt";
 
     public static void downloadFile() {
         URL url;
