@@ -1,6 +1,8 @@
 package com.niech_pan_sobie;
-
+import java.io.IOException;
 import java.util.Scanner;
+
+
 
 public class Main {
 
@@ -19,6 +21,11 @@ public class Main {
 
             switch (choice) {
                 case 1:
+                    try {
+                        FileHandler.downloadFile();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 2:
                     break;
