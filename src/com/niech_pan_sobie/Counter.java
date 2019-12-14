@@ -1,4 +1,4 @@
-package com.survivors;
+package com.niech_pan_sobie;
 
 import java.io.IOException;
 import java.nio.file.Files;
