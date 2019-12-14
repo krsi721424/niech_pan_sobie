@@ -4,9 +4,10 @@ import java.io.*;
 import java.net.*;
 
 public class FileHandler {
-    private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
-    private static final String name = "text.txt";
-    public static void downloadFile() throws IOException {
+    private static final String urlToFile = "https://s3.zylowski.net/public/input/4.txt";
+    private static final String name = "exercise.txt";
+
+    public static void downloadFile() {
         URL url;
         {
             try {
@@ -15,17 +16,17 @@ public class FileHandler {
                      BufferedInputStream bis = new BufferedInputStream(in);
                      FileOutputStream fos = new FileOutputStream(name)) {
 
-                    byte data[] = new byte[1024];
+                    byte[] data = new byte[1024];
                     int count;
                     while ((count = bis.read(data, 0, 1024)) != -1) {
                         fos.write(data, 0, count);
                     }
                 }
             } catch (MalformedURLException e) {
-                e.printStackTrace();
+                System.out.println("\n------------------------------------------------------\nSorry, something went wrong when tried to create link!\n------------------------------------------------------\n");
             }
             catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("\n--------------------------------------------------------\nSorry, something went wrong when tried to create the file!\n--------------------------------------------------------\n");
             }
         }
     }
