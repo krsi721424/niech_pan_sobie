@@ -21,7 +21,7 @@ public class Counter {
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c > 64 && c < 91 || c > 96 && c < 123) {
+                if (c == 46 || c == 63 ) {
                     lettersNumber++;
                 }
             }
