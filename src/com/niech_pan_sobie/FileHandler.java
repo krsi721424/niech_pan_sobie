@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 public class FileHandler {
     private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
     private static String name = "text.txt";
-//    zmiana
 
     public static void downloadFile() {
         URL url;
