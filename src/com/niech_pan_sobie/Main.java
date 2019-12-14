@@ -30,6 +30,7 @@ public class Main {
                     Counter.countWords();
                     break;
                 case 4:
+                    Counter.countPunctuaionMarks();
                     break;
                 case 5:
                     break;
@@ -39,6 +40,7 @@ public class Main {
                 case 7:
                     break;
                 case 8:
+                    FileHandler.endApplication();
                     break;
             }
         }

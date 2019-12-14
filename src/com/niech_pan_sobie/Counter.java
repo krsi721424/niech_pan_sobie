@@ -1,4 +1,5 @@
 package com.niech_pan_sobie;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
@@ -12,40 +13,40 @@ import java.util.Scanner;
 public class Counter {
 
     public static void countLetters() {
-        final Path path = Paths.get("text.txt");
+        Path path = Paths.get("text.txt");
         try {
             int lettersNumber = 0;
-            final List<String> lines = Files.readAllLines(path);
+            List<String> lines = Files.readAllLines(path);
 
-            final char[] chars = lines.get(0).toCharArray();
+            char[] chars = lines.get(0).toCharArray();
 
-            for (final char c: chars) {
+            for (char c: chars) {
                 if (c > 64 && c < 91 || c > 96 && c < 123) {
                     lettersNumber++;
                 }
             }
 
             System.out.println("\n------------------------------\nNumber of letters in file: " + lettersNumber + "\n------------------------------\n");
-        } catch (final IOException e) {
+        } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
         }
     }
 
     public static void countWords() {
-        final Path path = Paths.get("text.txt");
+        Path path = Paths.get("text.txt");
         int wordsNumber = 0;
         Scanner scanner = null;
         try {
             scanner = new Scanner(path);
-        }  catch (final NoSuchFileException n) {
+        }  catch (NoSuchFileException n) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
 
             return;
         }
-        catch (final IOException e) {
+        catch (IOException e) {
             return;
         }
-        catch (final NullPointerException u) {
+        catch (NullPointerException u) {
             return;
         }
         while (scanner.hasNext()) {
@@ -56,14 +57,34 @@ public class Counter {
         System.out.println("\n------------------------------\nNumber of words in file: " + wordsNumber + "\n------------------------------\n");
     }
 
-    public static void generateReport() {
-        final Path path = Paths.get("text.txt");
+    public static void countPunctuaionMarks() {
+        Path path = Paths.get("text.txt");
         try {
-            final Map<String, Integer> letters = generateAlphabetMap();
-            final List<String> lines = Files.readAllLines(path);
-            final String[] split = lines.get(0).split("");
+            int marksNumber = 0;
+            List<String> lines = Files.readAllLines(path);
 
-            for (final String s : split) {
+            char[] chars = lines.get(0).toCharArray();
+
+            for (char c: chars) {
+                if (c == 33 || c == 34 || c == 40 || c == 39 || c == 41 || c > 43 && c < 47 || c == 58 || c == 59 || c == 63 ) {
+                    marksNumber++;
+                }
+            }
+
+            System.out.println("\n------------------------------\nNumber of punctuation marks in the file: " + marksNumber + "\n------------------------------\n");
+        } catch (IOException e) {
+            System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
+        }
+    }
+
+    public static void generateReport() {
+        Path path = Paths.get("text.txt");
+        try {
+            Map<String, Integer> letters = generateAlphabetMap();
+            List<String> lines = Files.readAllLines(path);
+            String[] split = lines.get(0).split("");
+
+            for (String s : split) {
                 if (letters.containsKey(s)) {
                     int i = letters.get(s);
                     letters.replace(s, ++i);
@@ -72,16 +93,16 @@ public class Counter {
             System.out.println("\n----");
             letters.forEach((s, integer) -> System.out.println(s + ": " + integer));
             System.out.println("----\n");
-        } catch (final IOException e) {
+        } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
         }
     }
 
     private static Map<String, Integer> generateAlphabetMap() {
-        final Map<String, Integer> letters = new HashMap<>();
-        final String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+        Map<String, Integer> letters = new HashMap<>();
+        String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-        for (final String s : alphabet) {
+        for (String s : alphabet) {
             letters.put(s, 0);
         }
         return letters;
