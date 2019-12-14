@@ -1,6 +1,10 @@
 package com.niech_pan_sobie;
+
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class FileHandler {
     private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
@@ -20,6 +24,7 @@ public class FileHandler {
                     while ((count = bis.read(data, 0, 1024)) != -1) {
                         fos.write(data, 0, count);
                     }
+                    System.out.println("\n------------------------------------------------------\nThe file has been downloaded!\n------------------------------------------------------\n");
                 }
             } catch (MalformedURLException e) {
                 System.out.println("\n------------------------------------------------------\nSorry, something went wrong when tried to create link!\n------------------------------------------------------\n");
@@ -27,6 +32,17 @@ public class FileHandler {
             catch (IOException e) {
                 System.out.println("\n--------------------------------------------------------\nSorry, something went wrong when tried to create the file!\n--------------------------------------------------------\n");
             }
+        }
+    }
+
+    public static void endApplication () {
+        Path exercise = Paths.get("text.txt");
+        Path statistics = Paths.get("statystyki.txt");
+        try {
+            Files.deleteIfExists(exercise);
+            Files.deleteIfExists(statistics);
+        } catch (IOException e) {
+            System.out.println("Something went wrong - " + e.getMessage());
         }
     }
 }
