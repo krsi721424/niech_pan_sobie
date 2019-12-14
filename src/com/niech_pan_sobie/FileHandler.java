@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class FileHandler {
     private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
-    private static String name = "text.txt";
+    private static final String name = "text.txt";
 
     public static void downloadFile() {
         URL url;
@@ -36,10 +36,10 @@ public class FileHandler {
     }
 
     public static void endApplication () {
-        Path exercise = Paths.get("text.txt");
+        Path text = Paths.get("text.txt");
         Path statistics = Paths.get("statystyki.txt");
         try {
-            Files.deleteIfExists(exercise);
+            Files.deleteIfExists(text);
             Files.deleteIfExists(statistics);
         } catch (IOException e) {
             System.out.println("Something went wrong - " + e.getMessage());

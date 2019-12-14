@@ -30,9 +30,10 @@ public class Main {
                     Counter.countWords();
                     break;
                 case 4:
-                    Counter.countPunctuaionMarks();
+                    Counter.countPunctuationMarks();
                     break;
                 case 5:
+                    Counter.countSentences();
                     break;
                 case 6:
                     Counter.generateReport();
