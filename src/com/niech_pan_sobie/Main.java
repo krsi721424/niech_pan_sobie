@@ -10,6 +10,10 @@ public class Main {
 	    menu();
     }
 
+    static int words = -1;
+    static int letters= -1;
+    static int sentences = -1;
+    static int punctuationmarks = -1;
 
     private static void menu() {
         Scanner scanner = new Scanner(System.in);
@@ -27,17 +31,22 @@ public class Main {
                     Counter.countLetters();
                     break;
                 case 3:
+                    Counter.countWords();
                     break;
                 case 4:
+                    Counter.countPunctuationMarks();
                     break;
                 case 5:
+                    Counter.countSentences();
                     break;
                 case 6:
                     Counter.generateReport();
                     break;
                 case 7:
+                    FileHandler.saveStats();
                     break;
                 case 8:
+                    FileHandler.endApplication();
                     break;
             }
         }
