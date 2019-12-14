@@ -11,7 +11,9 @@ public class Main {
     }
 
     static int words = -1;
-    static int letters= -1;
+//    static int vowels= -1;
+//    static int cons = -1;
+    static int letters = -1;
     static int sentences = -1;
     static int punctuationmarks = -1;
 
