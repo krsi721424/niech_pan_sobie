@@ -2,11 +2,13 @@ package com.niech_pan_sobie;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Counter {
 
@@ -25,6 +27,7 @@ public class Counter {
             }
 
             System.out.println("\n------------------------------\nNumber of letters in file: " + lettersNumber + "\n------------------------------\n");
+            Main.letters = lettersNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
         }
@@ -53,6 +56,7 @@ public class Counter {
         }
         scanner.close();
         System.out.println("\n------------------------------\nNumber of words in file: " + wordsNumber + "\n------------------------------\n");
+        Main.words = wordsNumber;
     }
 
     public static void countPunctuationMarks() {
@@ -70,6 +74,7 @@ public class Counter {
             }
 
             System.out.println("\n------------------------------\nNumber of punctuation marks in the file: " + marksNumber + "\n------------------------------\n");
+            Main.punctuationmarks = marksNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
         }
@@ -78,18 +83,19 @@ public class Counter {
     public static void countSentences() {
         Path path = Paths.get("text.txt");
         try {
-            int sentences = 0;
+            int sentencesNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
                 if (c == 33 || c == 46 || c == 63 ) {
-                    sentences++;
+                    sentencesNumber++;
                 }
             }
 
-            System.out.println("\n------------------------------\nNumber of sentences in the file: " + sentences + "\n------------------------------\n");
+            System.out.println("\n------------------------------\nNumber of sentences in the file: " + sentencesNumber + "\n------------------------------\n");
+            Main.sentences = sentencesNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
         }

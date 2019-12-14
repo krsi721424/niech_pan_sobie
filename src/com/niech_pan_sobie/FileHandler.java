@@ -2,6 +2,10 @@ package com.niech_pan_sobie;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class FileHandler {
     private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
@@ -31,6 +35,46 @@ public class FileHandler {
             }
         }
     }
+
+
+    public static void saveStats() {
+        try {
+            PrintStream printStream = new PrintStream("statystyki.txt");
+            System.out.println("Data have been saved.");
+
+            printStream.println("===============Statistics of the operations on the file " + FileHandler.name + "===============\n\n");
+
+            if(Main.letters==-1){
+                printStream.println("\nCounting letters has not been executed");
+            }
+            else{
+                printStream.println("\nLetters count: " + Main.letters);
+            }
+            if(Main.words==-1){
+                printStream.println("\nCounting words has not been executed.");
+            }
+            else{
+                printStream.println("\nWords count: " +Main.words);
+            }
+            if(Main.punctuationmarks==-1){
+                printStream.println("\nCounting punctuation marks has not been executed.");
+            }
+            else{
+                printStream.println("\nPunctuation marks count: " +Main.punctuationmarks);
+            }
+            if(Main.sentences==-1){
+                printStream.println("\nCounting sentences has not been executed.");
+            }
+            else{
+                printStream.println("\nSentences count:" + Main.sentences);
+            }
+            printStream.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void endApplication () {
         Path text = Paths.get("text.txt");
