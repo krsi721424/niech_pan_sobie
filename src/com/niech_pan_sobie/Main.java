@@ -21,13 +21,10 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    try {
-                        FileHandler.downloadFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    FileHandler.downloadFile();
                     break;
                 case 2:
+                    Counter.countLetters();
                     break;
                 case 3:
                     break;
