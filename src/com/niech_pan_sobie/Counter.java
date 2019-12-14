@@ -15,19 +15,26 @@ public class Counter {
     public static void countLetters() {
         Path path = Paths.get("text.txt");
         try {
-            int lettersNumber = 0;
+            int vowNumber = 0;
+            int consNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c == 46 || c == 63 ) {
-                    lettersNumber++;
+                if (c > 64 && c < 91 && c != 65 && c!=69 && c!=73 && c!=79 && c!=85 || c > 96 && c < 123 && c!=97  && c!=101  && c!=105 && c!=111 && c!=117 ) {
+                    consNumber++;
+                }
+                else if (c == 65 || c == 97 || c==69 || c ==73 || c==105 || c==79 || c==111 || c ==85 || c==117){
+                    vowNumber++;
                 }
             }
 
-            System.out.println("\n------------------------------\nNumber of letters in file: " + lettersNumber + "\n------------------------------\n");
-            Main.letters = lettersNumber;
+            System.out.println("\n------------------------------\nNumber of vowels in the file: " + vowNumber + "\n------------------------------");
+            System.out.println("------------------------------\nNumber of consonants in the file: " + consNumber + "\n------------------------------\n");
+
+            Main.vowels = vowNumber;
+            Main.cons = consNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
         }
