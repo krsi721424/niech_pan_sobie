@@ -57,7 +57,7 @@ public class Counter {
         System.out.println("\n------------------------------\nNumber of words in file: " + wordsNumber + "\n------------------------------\n");
     }
 
-    public static void countPunctuaionMarks() {
+    public static void countPunctuationMarks() {
         Path path = Paths.get("text.txt");
         try {
             int marksNumber = 0;
@@ -77,6 +77,26 @@ public class Counter {
         }
     }
 
+    public static void countSentences() {
+        Path path = Paths.get("text.txt");
+        try {
+            int sentences = 0;
+            List<String> lines = Files.readAllLines(path);
+
+            char[] chars = lines.get(0).toCharArray();
+
+            for (char c: chars) {
+                if (c == 33 || c == 46 || c == 63 ) {
+                    sentences++;
+                }
+            }
+
+            System.out.println("\n------------------------------\nNumber of sentences in the file: " + sentences + "\n------------------------------\n");
+        } catch (IOException e) {
+            System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
+        }
+    }
+
     public static void generateReport() {
         Path path = Paths.get("text.txt");
         try {
@@ -85,9 +105,9 @@ public class Counter {
             String[] split = lines.get(0).split("");
 
             for (String s : split) {
-                if (letters.containsKey(s)) {
-                    int i = letters.get(s);
-                    letters.replace(s, ++i);
+                if (letters.containsKey(s.toUpperCase())) {
+                    int i = letters.get(s.toUpperCase());
+                    letters.replace(s.toUpperCase(), ++i);
                 }
             }
             System.out.println("\n----");

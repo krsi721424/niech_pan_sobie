@@ -36,10 +36,10 @@ public class FileHandler {
     }
 
     public static void endApplication () {
-        Path exercise = Paths.get("text.txt");
+        Path text = Paths.get("text.txt");
         Path statistics = Paths.get("statystyki.txt");
         try {
-            Files.deleteIfExists(exercise);
+            Files.deleteIfExists(text);
             Files.deleteIfExists(statistics);
         } catch (IOException e) {
             System.out.println("Something went wrong - " + e.getMessage());
