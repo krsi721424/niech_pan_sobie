@@ -27,13 +27,10 @@ public class Main {
                     Counter.countLetters();
                     break;
                 case 3:
-                    Counter.countWords();
                     break;
                 case 4:
-                    Counter.countPunctuationMarks();
                     break;
                 case 5:
-                    Counter.countSentences();
                     break;
                 case 6:
                     Counter.generateReport();
@@ -41,7 +38,6 @@ public class Main {
                 case 7:
                     break;
                 case 8:
-                    FileHandler.endApplication();
                     break;
             }
         }

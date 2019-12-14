@@ -2,9 +2,6 @@ package com.niech_pan_sobie;
 
 import java.io.*;
 import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class FileHandler {
     private static final String urlToFile = "https://s3.zylowski.net/public/input/6.txt";
