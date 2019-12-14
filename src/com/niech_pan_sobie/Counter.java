@@ -68,7 +68,7 @@ public class Counter {
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c == 33 || c == 34 || c == 40 || c == 39 || c == 41 || c > 43 && c < 47 || c == 58 || c == 59 || c == 63 ) {
+                if (c == 46 || c == 63 ) {
                     marksNumber++;
                 }
             }
