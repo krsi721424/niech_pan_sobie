@@ -12,62 +12,73 @@ import java.util.Scanner;
 
 public class Counter {
 
-    public static void countLetters() {
-        Path path = Paths.get("text.txt");
+    public static void countLetters(String fileName) {
         try {
-            int lettersNumber = 0;
+            Path path = Paths.get(fileName);
+            int vowNumber = 0;
+            int consNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c == 46 || c == 63 ) {
-                    lettersNumber++;
+                if (c > 64 && c < 91 && c != 65 && c!=69 && c!=73 && c!=79 && c!=85 || c > 96 && c < 123 && c!=97  && c!=101  && c!=105 && c!=111 && c!=117 ) {
+                    consNumber++;
+                }
+                else if (c == 65 || c == 97 || c==69 || c ==73 || c==105 || c==79 || c==111 || c ==85 || c==117){
+                    vowNumber++;
                 }
             }
 
-            System.out.println("\n------------------------------\nNumber of letters in file: " + lettersNumber + "\n------------------------------\n");
-            Main.letters = lettersNumber;
+            System.out.println("\n------------------------------\nNumber of vowels in the file: " + vowNumber + "\n------------------------------");
+            System.out.println("------------------------------\nNumber of consonants in the file: " + consNumber + "\n------------------------------\n");
+
+            Main.vowels = vowNumber;
+            Main.cons = consNumber;
+
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
+        } catch (NullPointerException e) {
+            System.out.println("\n----------------------------------------\nSorry, could not open file!\n----------------------------------------\n");
         }
     }
 
-    public static void countWords() {
-        Path path = Paths.get("text.txt");
+    public static void countWords(String fileName) {
         int wordsNumber = 0;
         Scanner scanner = null;
         try {
+            Path path = Paths.get(fileName);
             scanner = new Scanner(path);
         }  catch (NoSuchFileException n) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
-
             return;
         }
         catch (IOException | NullPointerException e) {
+            System.out.println("\n----------------------------------------\nSorry, could not open file!\n----------------------------------------\n");
             return;
         }
         while (scanner.hasNext()) {
-          String next = scanner.next();
+            String next = scanner.next();
             if (next.length()>1){
                 wordsNumber++;
             }
         }
+
         scanner.close();
         System.out.println("\n------------------------------\nNumber of words in file: " + wordsNumber + "\n------------------------------\n");
         Main.words = wordsNumber;
     }
 
-    public static void countPunctuationMarks() {
-        Path path = Paths.get("text.txt");
+    public static void countPunctuationMarks(String fileName) {
         try {
+            Path path = Paths.get(fileName);
             int marksNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c == 33 || c == 34 || c == 40 || c == 39 || c == 41 || c > 43 && c < 47 || c == 58 || c == 59 || c == 63 ) {
+                if (c == 46 || c == 63 ) {
                     marksNumber++;
                 }
             }
@@ -76,12 +87,14 @@ public class Counter {
             Main.punctuationmarks = marksNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
+        } catch (NullPointerException e) {
+            System.out.println("\n----------------------------------------\nSorry, could not open file!\n----------------------------------------\n");
         }
     }
 
-    public static void countSentences() {
-        Path path = Paths.get("text.txt");
+    public static void countSentences(String fileName) {
         try {
+            Path path = Paths.get(fileName);
             int sentencesNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
@@ -97,12 +110,14 @@ public class Counter {
             Main.sentences = sentencesNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, the file has not yet been downloaded!\n----------------------------------------\n");
+        } catch (NullPointerException e) {
+            System.out.println("\n----------------------------------------\nSorry, could not open file!\n----------------------------------------\n");
         }
     }
 
-    public static void generateReport() {
-        Path path = Paths.get("text.txt");
+    public static void generateReport(String fileName) {
         try {
+            Path path = Paths.get(fileName);
             Map<String, Integer> letters = generateAlphabetMap();
             List<String> lines = Files.readAllLines(path);
             String[] split = lines.get(0).split("");
@@ -118,6 +133,8 @@ public class Counter {
             System.out.println("----\n");
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
+        } catch (NullPointerException e) {
+            System.out.println("\n----------------------------------------\nSorry, could not open file!\n----------------------------------------\n");
         }
     }
 
