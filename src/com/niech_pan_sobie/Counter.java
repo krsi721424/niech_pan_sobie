@@ -15,26 +15,19 @@ public class Counter {
     public static void countLetters() {
         Path path = Paths.get("text.txt");
         try {
-            int vowNumber = 0;
-            int consNumber = 0;
+            int lettersNumber = 0;
             List<String> lines = Files.readAllLines(path);
 
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c > 64 && c < 91 && c != 65 && c!=69 && c!=73 && c!=79 && c!=85 || c > 96 && c < 123 && c!=97  && c!=101  && c!=105 && c!=111 && c!=117 ) {
-                    consNumber++;
-                }
-                else if (c == 65 || c == 97 || c==69 || c ==73 || c==105 || c==79 || c==111 || c ==85 || c==117){
-                    vowNumber++;
+                if (c > 64 && c < 91 || c > 96 && c < 123) {
+                    lettersNumber++;
                 }
             }
 
-            System.out.println("\n------------------------------\nNumber of vowels in the file: " + vowNumber + "\n------------------------------");
-            System.out.println("------------------------------\nNumber of consonants in the file: " + consNumber + "\n------------------------------\n");
-
-            Main.vowels = vowNumber;
-            Main.cons = consNumber;
+            System.out.println("\n------------------------------\nNumber of letters in file: " + lettersNumber + "\n------------------------------\n");
+            Main.letters = lettersNumber;
         } catch (IOException e) {
             System.out.println("\n----------------------------------------\nSorry, file has not yet been downloaded!\n----------------------------------------\n");
         }
@@ -51,10 +44,7 @@ public class Counter {
 
             return;
         }
-        catch (IOException e) {
-            return;
-        }
-        catch (NullPointerException u) {
+        catch (IOException | NullPointerException e) {
             return;
         }
         while (scanner.hasNext()) {
@@ -75,7 +65,7 @@ public class Counter {
             char[] chars = lines.get(0).toCharArray();
 
             for (char c: chars) {
-                if (c == 46 || c == 63 ) {
+                if (c == 33 || c == 34 || c == 40 || c == 39 || c == 41 || c > 43 && c < 47 || c == 58 || c == 59 || c == 63 ) {
                     marksNumber++;
                 }
             }
