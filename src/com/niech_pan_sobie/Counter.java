@@ -48,8 +48,10 @@ public class Counter {
             return;
         }
         while (scanner.hasNext()) {
-            scanner.next();
-            wordsNumber++;
+          String next = scanner.next();
+            if (next.length()>1){
+                wordsNumber++;
+            }
         }
         scanner.close();
         System.out.println("\n------------------------------\nNumber of words in file: " + wordsNumber + "\n------------------------------\n");
